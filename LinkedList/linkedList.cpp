@@ -19,6 +19,25 @@ void insertAtBeginning(Node* &head, int newData) {
     head = newNode;
 }
 
+void insertAtEnd(Node* &head, int newData) {
+    Node* newNode = new Node(newData);
+
+    // Checking if the list is empty or not 
+    if(head == nullptr) {
+        head = newNode;
+    }
+
+    Node* temp = head;
+
+    // traverse to the list to go to the end Node 
+    while(temp != nullptr) {
+        temp = temp->next;
+    } 
+
+    temp->next = newNode;
+
+}
+
 
 int main() {
 
