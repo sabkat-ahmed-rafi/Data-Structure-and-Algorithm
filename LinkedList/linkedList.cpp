@@ -14,9 +14,9 @@ struct Node {
 
 
 void insertAtBeginning(Node* &head, int newData) {
-    Node* newNode = new Node(newData);
-    newNode->next = head;
-    head = newNode;
+    Node* newNode = new Node(newData); // Create a new node
+    newNode->next = head; // Point new node to the current head
+    head = newNode; // Update head to the new node
 }
 
 void insertAtEnd(Node* &head, int newData) {
