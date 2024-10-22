@@ -25,12 +25,12 @@ void insertAtEnd(Node* &head, int newData) {
     // Checking if the list is empty or not 
     if(head == nullptr) {
         head = newNode;
+        return;
     }
 
     Node* temp = head;
-
-    // traverse to the list to go to the end Node 
-    while(temp != nullptr) {
+ 
+    while(temp->next != nullptr) { // traverse to the list to go to the end Node
         temp = temp->next;
     } 
 
@@ -49,6 +49,7 @@ int main() {
     secondElement->next = thirdElement;
     
     insertAtBeginning(firstElement, 40);
+    insertAtEnd(firstElement, 50);
 
     Node* current = firstElement;
 
