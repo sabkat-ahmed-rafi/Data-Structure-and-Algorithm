@@ -52,7 +52,7 @@ int main() {
     stack.push(20);
     stack.push(30);
     stack.push(40);
-    // stack.pop();
+    stack.pop();
 
     cout<< stack.peek() << endl;
     stack.display();
