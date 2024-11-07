@@ -71,4 +71,5 @@ int main() {
         queue.dequeue();
     }
 
+    return 0;
 }
