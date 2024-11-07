@@ -25,7 +25,7 @@ public:
         return rear == capacity -1;
     }
 
-    void inqueue(int value) {
+    void enqueue(int value) {
         if(isFull()) {
             return;
         }
@@ -47,10 +47,10 @@ public:
 int main() {
     Queue queue(5);
 
-    queue.inqueue(10);
-    queue.inqueue(20);
-    queue.inqueue(30);
-    queue.inqueue(40);
+    queue.enqueue(10);
+    queue.enqueue(20);
+    queue.enqueue(30);
+    queue.enqueue(40);
 
     while(!queue.isEmpty()) {
         cout<< queue.getFront() << ", ";
