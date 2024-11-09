@@ -17,7 +17,13 @@ int main() {
         cout<< "The value of rafi is found";
     }
 
+    for (const auto &pair : hashMap) {
+    cout << pair.first << ": " << pair.second << endl;
+    }
+
     cout << "Size: " << hashMap.size() << endl;
+
+    hashMap.clear();
 
     return 0;
 }
