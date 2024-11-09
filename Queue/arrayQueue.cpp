@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// FIFO
+
 class Queue {
     int *arr;
     int front, rear, capacity;

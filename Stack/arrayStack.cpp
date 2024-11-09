@@ -2,6 +2,8 @@
 using namespace std;
 #define MAX 5
 
+// LIFO 
+
 class ArrayStack {
     int top;
     int arr[MAX];

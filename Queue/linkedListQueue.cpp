@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// FIFO
+
 struct Node {
     int data;
     Node* next;

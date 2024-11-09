@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// LIFO 
+
 class Node {
 public:
     int data;
