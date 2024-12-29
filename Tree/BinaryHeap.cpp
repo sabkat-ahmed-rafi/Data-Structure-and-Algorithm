@@ -2,10 +2,10 @@
 #include <vector>
 using namespace std;
 
-class MaxHeap {
+class Heap {
     vector<int> heap;
 private:
-    void bubbleUp(int index) {
+    void bubbleUpMax(int index) {
         while(index > 0) {
             int parent = (index - 1) / 2;
             if(heap[index] > heap[parent]) {
@@ -16,7 +16,18 @@ private:
             }
         }
     }
-    void heapify(int index) {
+    void bubbleUpMin(int index) {
+        while(index > 0) {
+            int parent = (index - 1) / 2;
+            if(heap[index] < heap[parent]) {
+                swap(heap[index], heap[parent]);
+                index = parent;
+            } else {
+                break;
+            }
+        }
+    }
+    void heapifyMax(int index) {
         int largest = index;
         int left = (2 * index) + 1;
         int right = (2 * index) + 2;
@@ -26,36 +37,70 @@ private:
 
         if(largest != index) {
             swap(heap[index], heap[largest]);
-            heapify(largest);
+            heapifyMax(largest);
+        }
+    }
+    void heapifyMin(int index) {
+        int smallest = index;
+        int left = (2 * index) + 1;
+        int right = (2 * index) + 2;
+
+        if(left < heap.size() && heap[left] < heap[smallest]) smallest = left;
+        if(right < heap.size() && heap[right] < heap[smallest]) smallest = right;
+
+        if(smallest != index) {
+            swap(heap[index], heap[smallest]);
+            heapifyMin(smallest);
         }
     }
 
 public:
-    void insert(int value) {
+    void insertMax(int value) {
         heap.push_back(value);
-        bubbleUp(heap.size() - 1);
+        bubbleUpMax(heap.size() - 1);
     }
-    void deleteRoot() {
+    void insertMin(int value) {
+        heap.push_back(value);
+        bubbleUpMin(heap.size() - 1);
+    }
+    void deleteRootMax() {
         if(heap.empty()) return;
         heap[0] = heap.back();
         heap.pop_back();
-        heapify(0);
+        heapifyMax(0);
+    }
+    void deleteRootMin() {
+        if(heap.empty()) return;
+        heap[0] = heap.back();
+        heap.pop_back();
+        heapifyMin(0);
     }
     void printHeap() {
         for(int val : heap) cout << val << " ";
+        cout << endl;
     }
        
 };    
 
 int main() {
-    MaxHeap binaryHeap;
-    binaryHeap.insert(50);
-    binaryHeap.insert(20);
-    binaryHeap.insert(40);
-    binaryHeap.insert(30);
-    binaryHeap.insert(60);
-    binaryHeap.deleteRoot();
-    binaryHeap.printHeap();
+    Heap binaryMaxHeap;
+    binaryMaxHeap.insertMax(50);
+    binaryMaxHeap.insertMax(20);
+    binaryMaxHeap.insertMax(40);
+    binaryMaxHeap.insertMax(30);
+    binaryMaxHeap.insertMax(60);
+    binaryMaxHeap.deleteRootMax();
+    binaryMaxHeap.printHeap();
+
+    Heap binaryMinHeap;
+    binaryMinHeap.insertMin(50);
+    binaryMinHeap.insertMin(60);
+    binaryMinHeap.insertMin(30);
+    binaryMinHeap.insertMin(40);
+    binaryMinHeap.insertMin(20);
+    binaryMinHeap.insertMin(10);
+    binaryMinHeap.deleteRootMin();
+    binaryMinHeap.printHeap();
 
     return 0;
 }
