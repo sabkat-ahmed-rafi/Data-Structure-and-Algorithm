@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// This is an undirected and unweighted Graph
 
 class Graph {
 private:
